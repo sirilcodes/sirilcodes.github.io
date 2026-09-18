@@ -158,10 +158,8 @@ a { color: inherit; }
 .site-footer {
   flex-shrink: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 10px;
   padding: 16px 32px;
   border-top: 1px solid var(--border);
   font-size: 12px;
@@ -169,6 +167,70 @@ a { color: inherit; }
 }
 .site-footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
 .site-footer a:hover { color: var(--accent); }
+
+.term-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.term-form { display: flex; align-items: center; gap: 6px; flex: 1 1 240px; }
+.term-input {
+  flex: 1;
+  min-width: 100px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  padding: 2px 0;
+  caret-color: var(--accent);
+}
+.term-input::placeholder { color: var(--muted); opacity: 0.6; }
+.term-meta { font-size: 12px; color: var(--muted); }
+
+/* terminal output panel */
+.term-output {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed var(--border);
+}
+.term-output[hidden] { display: none; }
+.term-line { color: var(--muted); }
+.term-line .accent { margin-right: 4px; }
+.term-out { color: var(--text); white-space: pre-wrap; font-size: 12px; }
+.term-out.term-err { color: #d98b7a; }
+.term-out pre {
+  background: var(--code-bg);
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.term-postlist { display: flex; flex-direction: column; }
+.term-post-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--border);
+  text-decoration: none;
+  color: var(--text);
+  font-size: 12px;
+}
+.term-post-row:last-child { border-bottom: none; }
+.term-post-row:hover .post-title { color: var(--accent); }
+.term-post-row .post-date { width: 84px; flex-shrink: 0; color: var(--muted); }
+.term-post-row .post-title { flex-grow: 1; }
+.term-post-row .post-tags { color: var(--muted); }
+
+.term-prose { font-size: 13px; }
+.term-prose h3 { font-size: 14px; margin: 0 0 8px 0; color: var(--accent); }
+.term-prose p, .term-prose ul, .term-prose ol { font-size: 13px; line-height: 1.6; margin: 0 0 10px 0; }
+.term-prose pre { font-size: 11.5px; }
 
 /* small screens: laptop -> phone on a train (or elsewhere) */
 @media (max-width: 480px) {
