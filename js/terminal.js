@@ -73,7 +73,6 @@
           '  cat <slug>      print a post inline',
           '  cd <slug|~>     open a post ( ~ or .. = home )',
           '  about           open the about page',
-          '  rss             curl the rss feed',
           '  whoami          print the author',
           '  clear           clear this terminal',
           '  echo <text>     print text back'
@@ -92,20 +91,6 @@
     },
     about: function () {
       window.location.href = SITE.aboutURL;
-    },
-    rss: function () {
-      printText('curl ' + SITE.rssURL);
-      fetch(SITE.rssURL)
-        .then(function (r) { return r.text(); })
-        .then(function (text) {
-          var snippet = text.trim().split('\n').slice(0, 8).join('\n');
-          printHTML('<pre>' + escapeHTML(snippet) + '\n...</pre>');
-          reveal();
-        })
-        .catch(function () {
-          printText('curl: could not fetch rss.xml', 'term-err');
-          reveal();
-        });
     },
     ls: function () {
       loadPosts()
